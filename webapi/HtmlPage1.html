@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="showDiv"></div>
+
+
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $.ajax({
+                type: "GET",
+                url: "/api/values",
+                dataType: "json",
+                success: function (data) {
+                    var html = '';
+                    $.each(data, function (commentIndex, comment) {
+                        $("#showDiv").append("<div>" + comment.Name + "</div>");
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
