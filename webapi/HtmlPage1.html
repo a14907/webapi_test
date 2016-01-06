@@ -3,26 +3,31 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/knockout-2.2.0.js"></script>
 </head>
 <body>
-    <div id="showDiv"></div>
+    <p>Enter a numeric value: <input data-bind="value: attemptedValue" /></p>
+    <div data-bind="visible: !lastInputWasValid()">That's not a number!</div>
+<script>
+    var viewModel = {
+        acceptedNumericValue: ko.observable(123),
+        lastInputWasValid: ko.observable(true)
+    };
 
+    viewModel.attemptedValue = ko.dependentObservable({
+        read: viewModel.acceptedNumericValue,
+        write: function (value) {
+            if (isNaN(value))
+                this.lastInputWasValid(false);
+            else {
+                this.lastInputWasValid(true);
+                this.acceptedNumericValue(value); // Write to underlying storage
+            }
+        },
+        owner: viewModel
+    });
+</script>
 
-    <script src="Scripts/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $.ajax({
-                type: "GET",
-                url: "/api/values",
-                dataType: "json",
-                success: function (data) {
-                    var html = '';
-                    $.each(data, function (commentIndex, comment) {
-                        $("#showDiv").append("<div>" + comment.Name + "</div>");
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>

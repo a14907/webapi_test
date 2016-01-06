@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Routing;
+using System.Web.OData.Builder;
+using System.Web.OData.Extensions;
 using webapi.Models;
 
 namespace webapi
@@ -11,21 +13,12 @@ namespace webapi
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API 配置和服务
-
-            var constraintResolver = new DefaultInlineConstraintResolver();
-
-            config.MapHttpAttributeRoutes(constraintResolver);
-
-
-            // Web API 路由
-            //config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            ODataModelBuilder builder = new ODataConventionModelBuilder();
+            builder.EntitySet<Person>("Person");
+            config.MapODataServiceRoute(
+                routeName: "ODataRoute",
+                routePrefix: null,
+                model: builder.GetEdmModel());
         }
     }
 }

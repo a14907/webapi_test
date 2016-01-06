@@ -8,20 +8,23 @@ namespace webapi.Models
 {
     public class BookContext : DbContext
     {
-        // You can add custom code to this file. Changes will not be overwritten.
-        // 
-        // If you want Entity Framework to drop and regenerate your database
-        // automatically whenever you change your model schema, please use data migrations.
-        // For more information refer to the documentation:
-        // http://msdn.microsoft.com/en-us/data/jj591621.aspx
-    
-        public BookContext() : base("name=BookContext")
+        public BookContext()
+            : base("name=BookContext")
         {
+
         }
 
-        public System.Data.Entity.DbSet<webapi.Models.Book> Books { get; set; }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Person>().HasMany(p => p.Photos).WithMany(s => s.Persons).Map(m =>
+        //    {
+        //        m.ToTable("Person2Photo");
+        //        m.MapLeftKey("PersonId");
+        //        m.MapRightKey("PhotoId");
+        //    });
+        //}
 
-        public System.Data.Entity.DbSet<webapi.Models.Author> Authors { get; set; }
-    
+        public DbSet<Person> Person { get; set; }
+        //public DbSet<Photo> Photo { get; set; }
     }
 }
