@@ -25,6 +25,7 @@ namespace webapi.Models
         //}
 
         public DbSet<Person> Person { get; set; }
-        //public DbSet<Photo> Photo { get; set; }
+        public DbSet<Photo> Photo { get; set; }
+        public DbSet<PhotoPrice> PhotoPrice { get; set; }
     }
 }

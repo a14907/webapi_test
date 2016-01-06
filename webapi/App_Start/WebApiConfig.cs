@@ -15,6 +15,13 @@ namespace webapi
         {
             ODataModelBuilder builder = new ODataConventionModelBuilder();
             builder.EntitySet<Person>("Person");
+            builder.EntitySet<Photo>("Photo");
+
+            builder.Namespace = "webapi";
+            builder.EntityType<Photo>()
+                .Action("PhotoPrice")
+                .Parameter<int>("Price");
+
             config.MapODataServiceRoute(
                 routeName: "ODataRoute",
                 routePrefix: null,
