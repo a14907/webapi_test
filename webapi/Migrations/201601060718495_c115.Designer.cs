@@ -7,13 +7,13 @@ namespace webapi.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class PhotoObj : IMigrationMetadata
+    public sealed partial class c115 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PhotoObj));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(c115));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601060219276_PhotoObj"; }
+            get { return "201601060718495_c115"; }
         }
         
         string IMigrationMetadata.Source

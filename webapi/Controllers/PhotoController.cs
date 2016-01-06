@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.OData;
+using System.Web.OData.Routing;
 using webapi.Models;
 
 namespace webapi.Controllers
@@ -96,7 +97,6 @@ namespace webapi.Controllers
             db.PhotoPrice.Add(new PhotoPrice
             {
                 Price = rating,
-                PhotoId = key
             });
 
             try
@@ -121,6 +121,33 @@ namespace webapi.Controllers
         private bool PhotoExist(int key)
         {
             return db.Photo.Any(p => p.Id == key);
+        }
+
+        [HttpGet]
+        public bool ChangeName([FromODataUri] int key)
+        {
+            if (!ModelState.IsValid)
+            {
+                return false;
+            }
+            var model = db.Photo.FirstOrDefault(p => p.Id == key);
+            if (model == null)
+            {
+                return false;
+            }
+            model.Name = "test";
+            db.SaveChanges();
+            return true;
+        }
+
+        [HttpGet]
+        [ODataRoute("GetAPrice(Id={id})")]
+        public int GetAPrice([FromODataUri] int id)
+        {
+            var photo = db.Photo.Include(p => p.PhotoPrice).FirstOrDefault(p => p.Id == id);
+            if (photo != null)
+                return photo.PhotoPrice.Price;
+            return -1;
         }
     }
 }

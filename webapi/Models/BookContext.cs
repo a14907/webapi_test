@@ -14,15 +14,10 @@ namespace webapi.Models
 
         }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Person>().HasMany(p => p.Photos).WithMany(s => s.Persons).Map(m =>
-        //    {
-        //        m.ToTable("Person2Photo");
-        //        m.MapLeftKey("PersonId");
-        //        m.MapRightKey("PhotoId");
-        //    });
-        //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PhotoPrice>().HasRequired(p => p.Photo).WithRequiredPrincipal(s => s.PhotoPrice).Map(m => m.MapKey("wocao"));
+        }
 
         public DbSet<Person> Person { get; set; }
         public DbSet<Photo> Photo { get; set; }

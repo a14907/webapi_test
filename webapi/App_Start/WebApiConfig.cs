@@ -18,9 +18,16 @@ namespace webapi
             builder.EntitySet<Photo>("Photo");
 
             builder.Namespace = "webapi";
+
             builder.EntityType<Photo>()
                 .Action("PhotoPrice")
                 .Parameter<int>("Price");
+
+            builder.EntityType<Photo>()
+                .Function("ChangeName")
+                .Returns<bool>();
+
+            builder.Function("GetAPrice").Returns<int>().Parameter<int>("Id");
 
             config.MapODataServiceRoute(
                 routeName: "ODataRoute",

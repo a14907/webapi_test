@@ -173,23 +173,15 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
-    <Compile Include="Migrations\201601060324061_PhotoObjeee.cs" />
-    <Compile Include="Migrations\201601060324061_PhotoObjeee.Designer.cs">
-      <DependentUpon>201601060324061_PhotoObjeee.cs</DependentUpon>
+    <Compile Include="Migrations\201601060718495_c115.cs" />
+    <Compile Include="Migrations\201601060718495_c115.Designer.cs">
+      <DependentUpon>201601060718495_c115.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\PhotoPrice.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601060207177_init.cs" />
-    <Compile Include="Migrations\201601060207177_init.Designer.cs">
-      <DependentUpon>201601060207177_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601060219276_PhotoObj.cs" />
-    <Compile Include="Migrations\201601060219276_PhotoObj.Designer.cs">
-      <DependentUpon>201601060219276_PhotoObj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BookContext.cs" />
     <Compile Include="Models\Helpers.cs" />
     <Compile Include="Models\Person.cs" />
@@ -266,14 +258,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601060207177_init.resx">
-      <DependentUpon>201601060207177_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601060219276_PhotoObj.resx">
-      <DependentUpon>201601060219276_PhotoObj.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601060324061_PhotoObjeee.resx">
-      <DependentUpon>201601060324061_PhotoObjeee.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601060718495_c115.resx">
+      <DependentUpon>201601060718495_c115.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
